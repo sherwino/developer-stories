@@ -1,3 +1,6 @@
+/*$fa-font-path: '../node_modules/font-awesome/fonts';
+@import "../node_modules/font-awesome/css/font-awesome";*/
+
 /*
   Global CSS file
 */
@@ -9,6 +12,11 @@
 	box-sizing: border-box;
 	line-height: normal;
 }
+
+.footer-links {
+  margin: 0 15px;
+}
+
 
 ::-webkit-input-placeholder {
 	color:#aaa;
