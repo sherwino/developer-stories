@@ -1,8 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import ReactDOM from 'react-dom';
+import Select from 'react-select';
+import './example.css';
+
 
 // Import Style
 import styles from './PostCreateWidget.css';
+
+//Import the Dropdown/Select Components
+import States from './States';
 
 export class PostCreateWidget extends Component {
   addPost = () => {
@@ -22,7 +29,9 @@ export class PostCreateWidget extends Component {
         <div className={styles['form-content']}>
           <h2 className={styles['form-title']}><FormattedMessage id="createNewPost" /></h2>
           <input placeholder={this.props.intl.messages.postTitle} className={styles['form-field']} ref="title" /> {/* event title */}
+          <States label="Type of Event" searchable />
           <input placeholder={this.props.intl.messages.authorName} className={styles['form-field']} ref="name" /> {/* event type dropdown */}
+          Date of Event:
           <input placeholder={this.props.intl.messages.dateOfEvent} className={styles['form-field']}
           id="event-date" type="month" ref="event-month" min="1950-01" required pattern="[0-9]{4}-[0-9]{2}"/> {/* event date, works diff on firefox and chrome */}
           <span class="validity"></span>
