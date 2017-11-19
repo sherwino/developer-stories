@@ -12,12 +12,11 @@ export function Footer() {
     <div style={{ background: `#FFF url(${bg}) center` }} className={styles.footer}>
       <p>
         &copy; 2017 &middot;
-        <a class="footer-links" href="https://github.com/imguss" target="_Blank">Gus</a>,
-        <a class="footer-links" href="https://github.com/ivan-jorge001" target="_Blank">Ivan</a>,
-        <a class="footer-links" href="https://github.com/migmaldonado" target="_Blank">Miguel</a>
-        &amp;
-        <a class="footer-links" href="https://github.com/sherwino" target="_Blank">Sherwino </a>
-        &middot; Made @ Ironhack
+        Made @ Ironhack by:
+        <a class="footer-links" href="https://github.com/imguss" target="_Blank"> - Gus - </a>
+        <a class="footer-links" href="https://github.com/ivan-jorge001" target="_Blank">Ivan - </a>
+        <a class="footer-links" href="https://github.com/migmaldonado" target="_Blank">Miguel - </a>
+        <a class="footer-links" href="https://github.com/sherwino" target="_Blank">Sherwino</a>
       </p>
     </div>
   );
