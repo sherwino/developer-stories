@@ -31,7 +31,11 @@ class PostListPage extends Component {
 
   render() {
     return (
+
+
       <div>
+        <h1>Timeline</h1>
+        <h3>This is how I got to where I am:</h3>
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
         <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>
