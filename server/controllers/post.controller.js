@@ -2,7 +2,7 @@ import Post from '../models/post';
 import cuid from 'cuid';
 import slug from 'limax';
 import sanitizeHtml from 'sanitize-html';
-
+const request = require('request-promise');
 /**
  * Get all posts
  * @param req
@@ -77,4 +77,52 @@ export function deletePost(req, res) {
       res.status(200).end();
     });
   });
+}
+
+export function getLanguagesInRepo(url) {
+  const obj = {
+    client_id: 'Iv1.5ae13d428668cb41',
+    client_secret: '2bc7b798dcaea34cc65b51106e820c86927f9343',
+  };
+  const options = {
+    method: 'GET',
+    url: `${url}?client_id=${obj.client_id}&client_secret=${obj.client_secret}`,
+    headers: {
+      'User-Agent': 'Awesome-Octocat-App',
+      'cache-control': 'no-cache',
+    },
+  };
+
+  return request(options);
+}
+
+export function fetchUserDataFromGithub(req, res) {
+  const obj = {
+    client_id: 'Iv1.5ae13d428668cb41',
+    client_secret: '2bc7b798dcaea34cc65b51106e820c86927f9343',
+  };
+  const options = {
+    method: 'GET',
+    url: `https://api.github.com/users/${req.body.username}/repos?client_id=${obj.client_id}&client_secret=${obj.client_secret}`,
+    qs: {
+      type: 'all',
+      sort: 'created',
+      direction: 'asc',
+    },
+    headers: {
+      'User-Agent': 'Awesome-Octocat-App',
+      'cache-control': 'no-cache',
+      accept: 'application/vnd.github.v3+json',
+    },
+  };
+  request(options)
+    .then((body) => {
+      const arrToReturn = [];
+      const data = JSON.parse(body);
+      data.forEach((repo) => {
+        const { name, created_at, language } = repo;
+        arrToReturn.push({ name, language, created_at });
+      });
+      res.json({ arrToReturn });
+    });
 }
