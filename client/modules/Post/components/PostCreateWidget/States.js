@@ -66,7 +66,6 @@ var StatesField = createClass({
 					rtl={this.state.rtl}
 					searchable={this.state.searchable}
 				/>
-				<button style={{ marginTop: '15px' }} type="button" onClick={this.focusStateSelect}>Focus Select</button>
 			</div>
 		);
 	}
